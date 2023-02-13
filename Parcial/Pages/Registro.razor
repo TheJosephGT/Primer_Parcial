@@ -1,7 +1,8 @@
-@page "/libros"
+@page "/registro"
 
+@inject LibrosBLL librosBLL
 
-<EditForm >
+<EditForm Model="libros" OnInvalidSubmit="Guardar">
     <div class = "card">
     <div class="card-header">
         Registro de libros
@@ -9,20 +10,70 @@
 
     <div class = "card-body">
         <label>Libro Id: </label>
-        <!--<InputNumber @bind-Value="" class="form-control" /><br>-->
+        <InputNumber @bind-Value="libros.LibroId" class="form-control" /><br>
+
+        <button type="buttom" class="btn btn-primary" @onclick="Buscar"><span class ="oi oi-search" </span>Buscar</button> <br>
 
         <label>Titulo: </label>
-        <!--<InputText @bind-Value="" class="form-control" /><br>-->
+        <InputText @bind-Value="libros.Titulo" class="form-control" /><br>
 
         <label>Precio: </label>
-        <!--<InputNumber @bind-Value="" class="form-control" /><br>-->
+        <InputNumber @bind-Value="libros.precio" class="form-control" /><br>
     </div>
 
     <div>
-        <!--<button type="buttom" class="btn btn-primary" @onclick="Nuevo"><span class ="oi oi-file" </span>Nuevo</button>
-        <button type="buttom" class="btn btn-success" @onclick="Guardar"><span class ="oi oi-document" </span>Guardar</button> -->
+        <button type="buttom" class="btn btn-primary" @onclick="Nuevo"><span class ="oi oi-file" </span>Nuevo</button>
+        <button type="buttom" class="btn btn-success" @onclick="Guardar"><span class ="oi oi-document" </span>Guardar</button>
+        <button type="buttom" class="btn btn-danger"><span class ="oi oi-delete" </span>Eliminar</button>
 
     </div>
 
 </div>
 </EditForm>
+
+@code{
+    public int LibroId {get; set;}
+
+    public Libros libros {get; set; } = new Libros();
+
+    protected override void OnInitialized()
+    {
+        if (LibroId > 0)
+        {
+            this.libros.LibroId = LibroId;
+            this.Buscar();
+        }
+    }
+
+    void Buscar()
+    {
+
+        var libroEncontrado = librosBLL.Buscar(libros.LibroId);
+        if (libroEncontrado != null)
+        {
+            this.libros = libroEncontrado;
+        }
+    }
+
+    void Nuevo()
+    {
+        this.libros = new Libros();
+
+    }
+
+    void Guardar()
+    {
+        var guardado = librosBLL.Guardar(libros);
+
+        if (guardado)
+        {
+            Nuevo();
+        }
+        else
+        {
+
+        }
+
+    }
+
+}

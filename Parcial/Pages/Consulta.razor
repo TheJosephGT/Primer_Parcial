@@ -1,0 +1,29 @@
+﻿@page "/consulta"
+
+<PageTitle>Registro</PageTitle>
+
+@using Parcial.Data
+@inject LibrosBLL librosBLL
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>LibroId.</th>
+                <th>Titulo.</th>
+                <th>Precio.</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var valor in librosBLL.GetList(o=>true))
+            {
+                <tr>
+                    <td>@valor.LibroId</td>
+                    <td>@valor.Titulo</td>
+                    <td>@valor.precio</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
