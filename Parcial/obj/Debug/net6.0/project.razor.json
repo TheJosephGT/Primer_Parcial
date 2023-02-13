@@ -124,6 +124,43 @@
         }
       },
       {
+        "HashCode": 159057771,
+        "Kind": "Components.Component",
+        "Name": "Parcial.Pages.Registro",
+        "AssemblyName": "Parcial",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Registro"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Parcial.Pages.Registro",
+          "Common.TypeNamespace": "Parcial.Pages",
+          "Common.TypeNameIdentifier": "Registro"
+        }
+      },
+      {
+        "HashCode": -479297300,
+        "Kind": "Components.Component",
+        "Name": "Parcial.Pages.Registro",
+        "AssemblyName": "Parcial",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Parcial.Pages.Registro"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Parcial.Pages.Registro",
+          "Common.TypeNamespace": "Parcial.Pages",
+          "Common.TypeNameIdentifier": "Registro",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": 1284143806,
         "Kind": "Components.Component",
         "Name": "Parcial.App",
@@ -18761,6 +18798,11 @@
     {
       "FilePath": "c:\\Users\\josep\\Desktop\\PrimerParcial\\Parcial\\Shared\\NavMenu.razor",
       "TargetPath": "Shared\\NavMenu.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "c:\\Users\\josep\\Desktop\\PrimerParcial\\Parcial\\Pages\\Registro.razor",
+      "TargetPath": "Pages\\Registro.razor",
       "FileKind": "component"
     },
     {
