@@ -41,6 +41,8 @@ public class LibrosBLL {
             
     }
 
+
+
     public Libros? Buscar(int LibroId)
     {
         return _contexto.Libros.Where(o => o.LibroId == LibroId).AsNoTracking().SingleOrDefault();
@@ -51,6 +53,12 @@ public class LibrosBLL {
         
         
         return _contexto.Libros.AsNoTracking().Where(criterio).ToList();
+    }
+
+    private bool Eliminar(Libros libros)
+    {
+        _contexto.Entry(libros).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+        return _contexto.SaveChanges() > 0;
     }
 
 
