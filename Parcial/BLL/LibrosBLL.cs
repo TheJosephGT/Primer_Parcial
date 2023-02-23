@@ -23,9 +23,7 @@ public class LibrosBLL {
 
     private bool Modificar(Libros libro)
     {
-        _contexto.Entry(libro).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-
-
+        _contexto.Entry(libro).State = EntityState.Modified;
         return _contexto.SaveChanges() > 0;
     }
 
@@ -41,8 +39,6 @@ public class LibrosBLL {
             
     }
 
-
-
     public Libros? Buscar(int LibroId)
     {
         return _contexto.Libros.Where(o => o.LibroId == LibroId).AsNoTracking().SingleOrDefault();
@@ -55,9 +51,9 @@ public class LibrosBLL {
         return _contexto.Libros.AsNoTracking().Where(criterio).ToList();
     }
 
-    private bool Eliminar(Libros libros)
+    public bool Eliminar(Libros libros)
     {
-        _contexto.Entry(libros).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+        _contexto.Entry(libros).State = EntityState.Deleted;
         return _contexto.SaveChanges() > 0;
     }
 

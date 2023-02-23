@@ -1,6 +1,7 @@
 @page "/registro"
 
 @inject LibrosBLL librosBLL
+@inject NotificationService NotificationService
 
 <EditForm Model="libros" OnInvalidSubmit="Guardar">
     <div class = "card">
@@ -9,15 +10,20 @@
     </div>
 
     <div class = "card-body">
+
         <label>Libro Id: </label>
-        <InputNumber @bind-Value="libros.LibroId" class="form-control" /><br>
-
+        <InputNumber @bind-Value="libros.LibroId" class="form-control" />
+    </div>
+    <div>
         <button type="buttom" class="btn btn-primary" @onclick="Buscar"><span class ="oi oi-search" </span>Buscar</button> <br>
-
+    </div>
+    <div>
         <label>Titulo: </label>
         <InputText @bind-Value="libros.Titulo" class="form-control" /><br>
+    </div>
 
-        <label>Precio: </label>
+    <div>
+         <label>Precio: </label>
         <InputNumber @bind-Value="libros.precio" class="form-control" /><br>
     </div>
 
@@ -61,36 +67,33 @@
 
     }
 
+    bool Validar(){
+        if(!String.IsNullOrEmpty(libros.Titulo)){
+            return true;
+        }
+
+        return false;
+    }
+
     void Guardar()
     {
-        var guardado = librosBLL.Guardar(libros);
+        
 
-        if (guardado)
+        if (!Validar())
         {
-            Nuevo();
+            return;
         }
-        else
-        {
-
+        if(librosBLL.Guardar(libros)){
+            this.Nuevo();
         }
 
     }
 
-        void Eliminar()
+    void Eliminar()
     {
-        bool eliminado;
-
-        eliminado = true;
-
-        if (eliminado)
-        {
+        if(librosBLL.Eliminar(libros)){
             Nuevo();
         }
-        else
-        {
-
-        }
-
     }
 
 }
